@@ -131,20 +131,9 @@ section{
     letter-spacing:0.3px;
 }
 
-/* MOBILE: paksa 3 kolom */
-@media (max-width: 600px){
-    .grid-member{
-        grid-template-columns: repeat(3, 1fr);
-        gap:10px;
-    }
-
-    .card{
-        padding:3px;
-    }
-
-    .name{
-        font-size:0.6rem;
-    }
+.grid-member{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
 }
 
 /* CARD */
