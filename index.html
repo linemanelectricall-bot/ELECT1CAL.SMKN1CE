@@ -4,263 +4,279 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Industrial Electrical Class</title>
+<title>TITL 1 SMKN 1 Cerme</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Mono&display=swap" rel="stylesheet">
-
-<!-- GSAP -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <style>
-
 :root{
     --bg:#0B0E14;
     --cyan:#00F2FF;
     --amber:#FFB800;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-    background:var(--bg);
+    font-family:'Poppins',sans-serif;
     color:#fff;
-    font-family:'Space Mono', monospace;
-    overflow-x:hidden;
+    background:var(--bg);
 }
 
-/* ================= PRELOADER ================= */
-#preloader{
+/* BACKGROUND */
+.bg{
     position:fixed;
     width:100%;
-    height:100vh;
+    height:100%;
+    background:url('foto-kelas.jpg') center/cover no-repeat;
+    filter:brightness(0.3);
+    z-index:-3;
+}
+.grid{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
+    background-size:50px 50px;
+    z-index:-2;
+}
+
+/* INTRO */
+.intro{
+    position:fixed;
+    width:100%;
+    height:100%;
     background:#000;
     display:flex;
     justify-content:center;
     align-items:center;
-    z-index:9999;
     flex-direction:column;
+    z-index:999;
+    animation:hide 3s forwards;
 }
-
-.loader-text{
+.intro h1{
     font-family:'Orbitron';
-    font-size:2rem;
     color:var(--cyan);
-    letter-spacing:5px;
     text-shadow:0 0 20px var(--cyan);
 }
+@keyframes hide{
+    0%{opacity:1;}
+    80%{opacity:1;}
+    100%{opacity:0;visibility:hidden;}
+}
 
-/* ================= HERO ================= */
-.hero{
-    height:100vh;
-    background:url('https://images.unsplash.com/photo-1581092160607-ee22731c7e63') center/cover fixed;
+/* NAV */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
     display:flex;
-    align-items:center;
     justify-content:center;
+    gap:40px;
+    padding:15px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    z-index:100;
 }
-
-.glass{
-    backdrop-filter: blur(20px);
-    background:rgba(255,255,255,0.05);
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,0.1);
-}
-
-.glass h1{
-    font-family:'Orbitron';
+nav a{
     color:var(--cyan);
-    text-shadow:0 0 20px var(--cyan);
+    text-decoration:none;
+    font-family:'Orbitron';
 }
 
-/* ================= MEMBERS ================= */
-.members{
-    padding:80px 20px;
+/* SECTION */
+section{padding:100px 20px;}
+
+/* HOME */
+.home img{
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+    border-radius:20px;
 }
 
+.desc{
+    max-width:800px;
+    margin:30px auto;
+    line-height:1.7;
+    text-align:center;
+}
+
+/* TITLE */
 .title{
     text-align:center;
     font-family:'Orbitron';
     color:var(--amber);
-    margin-bottom:50px;
+    margin-bottom:40px;
 }
 
-.grid{
+/* GRID */
+.grid-member{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
 }
 
+/* CARD */
 .card{
-    position:relative;
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:15px;
-    overflow:hidden;
-    cursor:pointer;
-    transition:0.3s;
+    text-align:center;
 }
-
 .card img{
     width:100%;
-    display:block;
+    border-radius:12px;
+    transition:0.3s;
+}
+.card:hover img{
+    transform:scale(1.05);
+    box-shadow:0 0 20px var(--cyan);
+}
+.name{margin-top:8px;font-size:0.85rem;}
+
+/* WALI */
+.leader{
+    grid-column:1/-1;
+    max-width:200px;
+    margin:auto;
 }
 
-.card:hover{
+/* ALBUM */
+.album{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.album img{
+    width:100%;
+    border-radius:15px;
+    transition:0.3s;
+}
+.album img:hover{
     transform:scale(1.05);
     box-shadow:0 0 20px var(--cyan);
 }
 
-/* GLOW BORDER */
-.card::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    border:1px solid var(--cyan);
-    opacity:0.3;
-}
-
-/* ================= GLITCH ================= */
-.glitch{
-    animation:glitch 0.2s;
-}
-
-@keyframes glitch{
-    0%{transform:translate(2px,0);}
-    50%{transform:translate(-2px,0);}
-    100%{transform:translate(0,0);}
-}
-
-/* ================= CURSOR ================= */
-.cursor{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:var(--cyan);
+/* CANVAS */
+canvas{
     position:fixed;
+    top:0;
+    left:0;
     pointer-events:none;
-    box-shadow:0 0 20px var(--cyan);
-    z-index:999;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- PRELOADER -->
-<div id="preloader">
-    <div class="loader-text">INITIALIZING SYSTEM...</div>
+<div class="bg"></div>
+<div class="grid"></div>
+
+<!-- INTRO -->
+<div class="intro">
+<h1>TITL 1</h1>
+<p>Electrical Engineering Class</p>
 </div>
 
-<!-- CURSOR -->
-<div class="cursor"></div>
+<nav>
+<a href="#home">HOME</a>
+<a href="#anggota">ANGGOTA</a>
+<a href="#album">ALBUM</a>
+</nav>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="glass">
-        <h1>INDUSTRIAL ELECTRICAL ENGINEERING</h1>
-        <p>Professional Class • High Voltage Mindset ⚡</p>
-    </div>
+<canvas id="canvas"></canvas>
+
+<!-- HOME -->
+<section id="home" class="home">
+<img src="foto-kelas.jpg">
+
+<div class="desc">
+Kami adalah siswa Teknik Instalasi Tenaga Listrik SMKN 1 Cerme Gresik angkatan 27.
+
+Di tempat inilah kami belajar memahami arti kerja keras,
+bukan hanya tentang listrik, tetapi tentang kehidupan.
+
+Kami pernah gagal, pernah salah, dan pernah merasa lelah,
+namun kami selalu bangkit bersama.
+
+Kelas ini bukan hanya ruang belajar,
+melainkan tempat kami tumbuh, berbagi, dan bermimpi.
+
+Suatu hari nanti kami akan berjalan di jalan yang berbeda,
+namun kenangan di kelas ini akan selalu menjadi bagian dari diri kami.
+
+TITL 1 — bukan hanya kelas,
+tetapi keluarga.
+</div>
 </section>
 
-<!-- MEMBERS -->
-<section class="members">
-    <h2 class="title">ACTIVE CIRCUIT</h2>
+<!-- ANGGOTA -->
+<section id="anggota">
+<h2 class="title">STRUKTUR KELAS</h2>
 
-    <div class="grid">
+<div class="grid-member">
 
-        <!-- WALI KELAS -->
-        <div class="card">
-            <img src="https://i.pravatar.cc/300?img=1">
-        </div>
-
-        <!-- ANGGOTA -->
-        <div class="card"><img src="https://i.pravatar.cc/300?img=2"></div>
-        <div class="card"><img src="https://i.pravatar.cc/300?img=3"></div>
-        <div class="card"><img src="https://i.pravatar.cc/300?img=4"></div>
-        <div class="card"><img src="https://i.pravatar.cc/300?img=5"></div>
-
-    </div>
-</section>
-
-<canvas id="sparkCanvas"></canvas>
+<!-- WALI -->
+<div class="card leader">
+<img src="wali.jpg">
+<div class="name">Wali Kelas</div>
+</div>
 
 <script>
+for(let i=1;i<=33;i++){
+document.write(`
+<div class="card">
+<img src="${i}.jpg">
+<div class="name">Nama ${i}</div>
+</div>
+`);
+}
+</script>
 
-/* ================= PRELOADER ================= */
-setTimeout(()=>{
-    gsap.to("#preloader",{opacity:0,duration:1,onComplete:()=>{
-        document.getElementById("preloader").style.display="none";
-    }});
-},3000);
+</div>
+</section>
 
-/* ================= CURSOR ================= */
-const cursor = document.querySelector('.cursor');
+<!-- ALBUM -->
+<section id="album">
+<h2 class="title">MOMENT KEBERSAMAAN</h2>
 
-document.addEventListener('mousemove',e=>{
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
+<div class="album">
+<img src="a1.jpg">
+<img src="a2.jpg">
+<img src="a3.jpg">
+<img src="a4.jpg">
+<img src="a5.jpg">
+</div>
+</section>
 
-/* ================= SPARK EFFECT ================= */
-const canvas = document.getElementById("sparkCanvas");
-const ctx = canvas.getContext("2d");
+<script>
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 
-let sparks = [];
+let p=[];
 
-function createSpark(x,y){
-    for(let i=0;i<20;i++){
-        sparks.push({
-            x:x,
-            y:y,
-            vx:(Math.random()-0.5)*5,
-            vy:(Math.random()-0.5)*5,
-            life:30
-        });
-    }
+for(let i=0;i<80;i++){
+p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5),vy:(Math.random()-0.5)});
 }
 
-function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+function anim(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    sparks.forEach((p,i)=>{
-        p.x+=p.vx;
-        p.y+=p.vy;
-        p.life--;
+p.forEach(a=>{
+a.x+=a.vx;
+a.y+=a.vy;
 
-        ctx.beginPath();
-        ctx.strokeStyle="rgba(0,242,255,0.8)";
-        ctx.moveTo(p.x,p.y);
-        ctx.lineTo(p.x+p.vx*2,p.y+p.vy*2);
-        ctx.stroke();
-
-        if(p.life<=0) sparks.splice(i,1);
-    });
-
-    requestAnimationFrame(animate);
-}
-
-animate();
-
-/* ================= CLICK EFFECT ================= */
-document.querySelectorAll('.card').forEach(card=>{
-    card.addEventListener('click',e=>{
-        let rect = card.getBoundingClientRect();
-        createSpark(rect.left + rect.width/2, rect.top + rect.height/2);
-
-        card.classList.add('glitch');
-        setTimeout(()=>card.classList.remove('glitch'),200);
-    });
+ctx.fillStyle="rgba(0,255,255,0.4)";
+ctx.fillRect(a.x,a.y,2,2);
 });
 
+requestAnimationFrame(anim);
+}
+anim();
 </script>
 
 </body>
