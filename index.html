@@ -6,7 +6,7 @@
 
 <title>TITL 1 SMKN 1 CERME</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <style>
@@ -37,7 +37,6 @@ body{
     flex-direction:column;
     z-index:999;
     text-align:center;
-    padding:20px;
 }
 
 .intro h1{
@@ -62,8 +61,8 @@ nav{
     justify-content:center;
     gap:20px;
     padding:10px;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(12px);
     z-index:100;
 }
 
@@ -77,49 +76,59 @@ nav a{
 /* SECTION */
 section{
     min-height:100vh;
-    padding:90px 15px;
+    padding:100px 18px 60px;
     opacity:0;
     transform:translateY(60px);
 }
 
-/* HOME */
-.home{
-    text-align:center;
-}
-
+/* HERO */
 .hero{
     position:relative;
+    border-radius:0 0 25px 25px;
+    overflow:hidden;
 }
 
+/* FOTO LEBIH CERAH */
 .hero img{
     width:100%;
-    height:220px;
+    height:230px;
     object-fit:cover;
-    border-radius:0 0 25px 25px;
-    filter:brightness(0.7);
+    filter:brightness(1.05) contrast(1.05);
 }
 
+/* OVERLAY GRADIENT BIAR NYATU */
+.hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom, transparent 40%, rgba(11,14,20,0.95));
+}
+
+/* JUDUL */
 .hero-title{
     position:absolute;
-    bottom:20px;
+    bottom:18px;
     left:50%;
     transform:translateX(-50%);
     font-family:'Orbitron';
-    font-size:clamp(1.2rem,5vw,2.2rem);
+    font-size:clamp(1.2rem,5vw,2rem);
+    text-align:center;
     background:linear-gradient(90deg,#00F2FF,#FFD000);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-    text-shadow:0 0 15px rgba(0,255,255,0.5);
+    text-shadow:0 0 12px rgba(0,255,255,0.5);
+    z-index:2;
 }
 
+/* DESKRIPSI (UPGRADE) */
 .desc{
-    max-width:600px;
-    margin:20px auto 0;
+    max-width:550px;
+    margin:25px auto 0;
     text-align:center;
-    line-height:1.6;
+    line-height:1.7;
     font-size:0.9rem;
     opacity:0.85;
-    padding:0 10px;
+    letter-spacing:0.3px;
 }
 
 /* GRID */
@@ -127,27 +136,18 @@ section{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
     gap:15px;
+    margin-top:25px;
 }
 
 /* CARD */
 .card{
-    position:relative;
     padding:5px;
     border-radius:12px;
     background:linear-gradient(145deg,#1a1f2a,#0a0d12);
     box-shadow:
     0 0 8px rgba(0,255,255,0.2),
     inset 0 0 8px rgba(0,255,255,0.1);
-    cursor:pointer;
     transition:0.3s;
-}
-
-.card::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    border-radius:12px;
-    border:1px solid rgba(0,255,255,0.2);
 }
 
 .card img{
@@ -164,6 +164,7 @@ section{
     text-align:center;
     margin-top:6px;
     font-size:0.7rem;
+    opacity:0.9;
 }
 
 .leader{
@@ -177,15 +178,12 @@ section{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
     gap:10px;
+    margin-top:20px;
 }
 
 .album img{
     width:100%;
     border-radius:12px;
-}
-
-.album img:hover{
-    transform:scale(1.03);
 }
 
 /* CANVAS */
@@ -200,7 +198,6 @@ canvas{
 
 <body>
 
-<!-- INTRO -->
 <div class="intro">
 <h1 id="introText">ELECTR1CAL ENGINEERING</h1>
 <p>Initializing Electrical System...</p>
@@ -214,36 +211,24 @@ canvas{
 
 <canvas id="electric"></canvas>
 
-<!-- HOME -->
-<section id="home" class="home">
-
+<section id="home">
 <div class="hero">
 <img src="foto-kelas.jpg">
 <h2 class="hero-title">TITL 1 • SMKN 1 CERME</h2>
 </div>
 
 <div class="desc">
-Kami adalah siswa Teknik Instalasi Tenaga Listrik SMKN 1 Cerme Gresik angkatan 27.
-
-Kami belajar bukan hanya tentang listrik,
-tetapi tentang kehidupan, kerja keras, dan masa depan.
-
-Setiap percikan yang kami lihat adalah harapan,
-setiap rangkaian adalah langkah menuju impian kami.
-
-TITL 1 bukan sekadar kelas,
-tetapi keluarga yang akan selalu kami ingat.
+Kami adalah siswa Teknik Instalasi Tenaga Listrik SMKN 1 Cerme Gresik angkatan 27.<br><br>
+Kami belajar bukan hanya tentang listrik, tetapi tentang kehidupan, kerja keras, dan masa depan.<br><br>
+Setiap percikan adalah harapan, setiap rangkaian adalah langkah menuju impian.<br><br>
+TITL 1 bukan sekadar kelas, tetapi keluarga.
 </div>
-
 </section>
 
-<!-- ANGGOTA -->
 <section id="anggota">
-
 <h2 style="text-align:center;color:var(--yellow);font-family:Orbitron;">STRUKTUR KELAS</h2>
 
 <div class="grid-member">
-
 <div class="card leader">
 <img src="wali.jpg">
 <div class="name">Wali Kelas</div>
@@ -259,14 +244,10 @@ document.write(`
 `);
 }
 </script>
-
 </div>
-
 </section>
 
-<!-- ALBUM -->
 <section id="album">
-
 <h2 style="text-align:center;color:var(--yellow);font-family:Orbitron;">MOMENT</h2>
 
 <div class="album">
@@ -276,7 +257,6 @@ document.write(`
 <img src="a4.jpg">
 <img src="a5.jpg">
 </div>
-
 </section>
 
 <script>
@@ -284,15 +264,12 @@ document.write(`
 /* INTRO */
 gsap.from("#introText",{scale:0,opacity:0,duration:1.2});
 
-if(window.innerWidth < 600){
-    gsap.to(".intro",{opacity:0,delay:1.5,duration:0.8,onComplete:()=>{
-        document.querySelector(".intro").style.display="none";
-    }});
-}else{
-    gsap.to(".intro",{opacity:0,delay:2.5,duration:1,onComplete:()=>{
-        document.querySelector(".intro").style.display="none";
-    }});
-}
+gsap.to(".intro",{
+opacity:0,
+delay: window.innerWidth < 600 ? 1.5 : 2.5,
+duration:1,
+onComplete:()=>document.querySelector(".intro").style.display="none"
+});
 
 /* SCROLL */
 gsap.utils.toArray("section").forEach(sec=>{
@@ -317,7 +294,7 @@ canvas.height=innerHeight;
 let sparks=[];
 
 function spark(x,y){
-for(let i=0;i<12;i++){
+for(let i=0;i<10;i++){
 sparks.push({
 x,y,
 vx:(Math.random()-0.5)*6,
@@ -352,31 +329,11 @@ requestAnimationFrame(draw);
 }
 draw();
 
-/* HOVER */
-document.addEventListener("mouseover",e=>{
-if(e.target.closest(".card")){
-let r=e.target.closest(".card").getBoundingClientRect();
-spark(r.left+r.width/2, r.top+r.height/2);
-}
-});
-
-/* MOUSE */
+/* INTERAKSI */
 document.addEventListener("mousemove",e=>{
 if(Math.random()<0.2){
 spark(e.clientX,e.clientY);
 }
-});
-
-/* NAV */
-document.querySelectorAll("nav a").forEach(link=>{
-link.addEventListener("click",e=>{
-e.preventDefault();
-let target=document.querySelector(link.getAttribute("href"));
-window.scrollTo({
-top:target.offsetTop,
-behavior:"smooth"
-});
-});
 });
 
 </script>
