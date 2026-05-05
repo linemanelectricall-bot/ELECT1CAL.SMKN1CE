@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TITL 1 - Industrial Class</title>
+<title>TITL 1 SMKN 1 CERME</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -25,7 +25,27 @@ body{
     overflow-x:hidden;
 }
 
-/* NAV */
+/* ================= INTRO ================= */
+.intro{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:999;
+}
+
+.intro h1{
+    font-family:'Orbitron';
+    font-size:3rem;
+    color:var(--cyan);
+    text-shadow:0 0 30px var(--cyan);
+}
+
+/* ================= NAV ================= */
 nav{
     position:fixed;
     width:100%;
@@ -36,7 +56,7 @@ nav{
     padding:15px;
     background:rgba(0,0,0,0.7);
     backdrop-filter:blur(10px);
-    z-index:1000;
+    z-index:100;
 }
 nav a{
     color:var(--cyan);
@@ -44,15 +64,15 @@ nav a{
     font-family:'Orbitron';
 }
 
-/* SECTION */
+/* ================= SECTION ================= */
 section{
     min-height:100vh;
     padding:120px 20px;
     opacity:0;
-    transform:translateY(50px);
+    transform:translateY(60px);
 }
 
-/* HOME */
+/* ================= HOME ================= */
 .home img{
     width:100%;
     max-height:500px;
@@ -60,50 +80,72 @@ section{
     border-radius:20px;
 }
 
+/* JUDUL */
+.hero-title{
+    text-align:center;
+    font-family:'Orbitron';
+    font-size:2.2rem;
+    margin-top:30px;
+    background:linear-gradient(90deg,#00F2FF,#FFD000);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 25px rgba(0,255,255,0.5);
+}
+
+/* DESKRIPSI */
 .desc{
     max-width:800px;
-    margin:30px auto;
+    margin:20px auto;
     text-align:center;
     line-height:1.7;
 }
 
-/* TITLE */
-.title{
-    text-align:center;
-    font-family:'Orbitron';
-    color:var(--yellow);
-    margin-bottom:40px;
-}
-
-/* GRID */
-.grid{
+/* ================= GRID ================= */
+.grid-member{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:25px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
 .card{
     position:relative;
-    text-align:center;
-    border-radius:12px;
-    overflow:hidden;
+    padding:6px;
+    border-radius:15px;
+    background:linear-gradient(145deg,#1a1f2a,#0a0d12);
+    box-shadow:
+    0 0 10px rgba(0,255,255,0.2),
+    inset 0 0 10px rgba(0,255,255,0.1);
     cursor:pointer;
-}
-.card img{
-    width:100%;
-    border-radius:12px;
     transition:0.3s;
 }
 
-/* GLOW HOVER */
-.card:hover img{
-    transform:scale(1.05);
-    box-shadow:0 0 20px var(--cyan);
+/* FRAME */
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:15px;
+    border:1px solid rgba(0,255,255,0.3);
+}
+
+/* IMAGE */
+.card img{
+    width:100%;
+    border-radius:10px;
+    display:block;
+    transition:0.3s;
+}
+
+/* HOVER */
+.card:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 0 25px var(--cyan);
 }
 
 /* NAME */
 .name{
+    text-align:center;
     margin-top:8px;
     font-size:0.85rem;
 }
@@ -111,11 +153,11 @@ section{
 /* WALI */
 .leader{
     grid-column:1/-1;
-    max-width:200px;
+    max-width:220px;
     margin:auto;
 }
 
-/* ALBUM */
+/* ================= ALBUM ================= */
 .album{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -131,18 +173,23 @@ section{
     box-shadow:0 0 20px var(--cyan);
 }
 
-/* CANVAS */
+/* ================= CANVAS ================= */
 canvas{
     position:fixed;
     top:0;
     left:0;
     pointer-events:none;
-    z-index:0;
 }
 </style>
 </head>
 
 <body>
+
+<!-- INTRO -->
+<div class="intro">
+<h1 id="introText">ELECTR1CAL ENGINEERING</h1>
+<p>Initializing Electrical System...</p>
+</div>
 
 <nav>
 <a href="#home">HOME</a>
@@ -150,33 +197,38 @@ canvas{
 <a href="#album">ALBUM</a>
 </nav>
 
-<canvas id="spark"></canvas>
+<canvas id="electric"></canvas>
 
 <!-- HOME -->
 <section id="home" class="home">
+
 <img src="foto-kelas.jpg">
+
+<h2 class="hero-title">TITL 1 • SMKN 1 CERME</h2>
+
 <div class="desc">
-Kami adalah siswa TITL 1 SMKN 1 Cerme Gresik Angkatan 27.
+Kami adalah siswa Teknik Instalasi Tenaga Listrik SMKN 1 Cerme Gresik angkatan 27.
 
 Kami belajar bukan hanya tentang listrik,
-tetapi tentang bagaimana menghadapi dunia nyata.
+tetapi tentang kehidupan, kerja keras, dan masa depan.
 
-Setiap percikan yang kami lihat,
-setiap rangkaian yang kami buat,
-adalah bagian dari perjalanan kami.
+Setiap percikan yang kami lihat adalah harapan,
+setiap rangkaian adalah langkah menuju impian kami.
 
-Kami adalah satu tim,
-satu tujuan,
-dan satu keluarga.
+TITL 1 bukan sekadar kelas,
+tetapi keluarga yang akan selalu kami ingat.
 </div>
+
 </section>
 
 <!-- ANGGOTA -->
 <section id="anggota">
-<h2 class="title">STRUKTUR KELAS</h2>
 
-<div class="grid">
+<h2 style="text-align:center;color:var(--yellow);font-family:Orbitron;">STRUKTUR KELAS</h2>
 
+<div class="grid-member">
+
+<!-- WALI -->
 <div class="card leader">
 <img src="wali.jpg">
 <div class="name">Wali Kelas</div>
@@ -194,11 +246,13 @@ document.write(`
 </script>
 
 </div>
+
 </section>
 
 <!-- ALBUM -->
 <section id="album">
-<h2 class="title">MOMENT</h2>
+
+<h2 style="text-align:center;color:var(--yellow);font-family:Orbitron;">MOMENT</h2>
 
 <div class="album">
 <img src="a1.jpg">
@@ -207,25 +261,32 @@ document.write(`
 <img src="a4.jpg">
 <img src="a5.jpg">
 </div>
+
 </section>
 
 <script>
 
-/* GSAP SCROLL ANIMATION */
+/* INTRO */
+gsap.from("#introText",{scale:0,opacity:0,duration:1.5});
+gsap.to(".intro",{opacity:0,delay:2.5,duration:1,onComplete:()=>{
+document.querySelector(".intro").style.display="none";
+}});
+
+/* SCROLL */
 gsap.utils.toArray("section").forEach(sec=>{
-    gsap.to(sec,{
-        opacity:1,
-        y:0,
-        duration:1,
-        scrollTrigger:{
-            trigger:sec,
-            start:"top 80%"
-        }
-    });
+gsap.to(sec,{
+opacity:1,
+y:0,
+duration:1,
+scrollTrigger:{
+trigger:sec,
+start:"top 80%"
+}
+});
 });
 
-/* SPARK SYSTEM */
-const canvas=document.getElementById("spark");
+/* ELECTRIC SYSTEM */
+const canvas=document.getElementById("electric");
 const ctx=canvas.getContext("2d");
 
 canvas.width=innerWidth;
@@ -233,60 +294,67 @@ canvas.height=innerHeight;
 
 let sparks=[];
 
-function createSpark(x,y){
-    for(let i=0;i<30;i++){
-        sparks.push({
-            x,y,
-            vx:(Math.random()-0.5)*8,
-            vy:(Math.random()-0.5)*8,
-            life:30
-        });
-    }
+function spark(x,y){
+for(let i=0;i<15;i++){
+sparks.push({
+x,y,
+vx:(Math.random()-0.5)*8,
+vy:(Math.random()-0.5)*8,
+life:20
+});
+}
 }
 
 function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.globalCompositeOperation="lighter";
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.globalCompositeOperation="lighter";
 
-    sparks.forEach((p,i)=>{
-        p.x+=p.vx;
-        p.y+=p.vy;
-        p.life--;
+sparks.forEach((p,i)=>{
+p.x+=p.vx;
+p.y+=p.vy;
+p.life--;
 
-        ctx.strokeStyle="rgba(255,208,0,0.9)";
-        ctx.shadowBlur=15;
-        ctx.shadowColor="#FFD000";
+ctx.strokeStyle="rgba(255,208,0,0.9)";
+ctx.shadowBlur=20;
+ctx.shadowColor="#FFD000";
 
-        ctx.beginPath();
-        ctx.moveTo(p.x,p.y);
-        ctx.lineTo(p.x+p.vx*2,p.y+p.vy*2);
-        ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(p.x,p.y);
+ctx.lineTo(p.x+p.vx,p.y+p.vy);
+ctx.stroke();
 
-        if(p.life<=0) sparks.splice(i,1);
-    });
+if(p.life<=0) sparks.splice(i,1);
+});
 
-    requestAnimationFrame(draw);
+requestAnimationFrame(draw);
 }
 draw();
 
 /* HOVER SPARK */
 document.querySelectorAll('.card').forEach(card=>{
-    card.addEventListener('mouseenter',()=>{
-        let r=card.getBoundingClientRect();
-        createSpark(r.left+r.width/2, r.top+r.height/2);
-    });
+card.addEventListener('mouseenter',()=>{
+let r=card.getBoundingClientRect();
+spark(r.left+r.width/2, r.top+r.height/2);
+});
 });
 
-/* CLICK NAV ANIMATION */
+/* MOUSE TRAIL */
+document.addEventListener("mousemove",e=>{
+if(Math.random()<0.3){
+spark(e.clientX,e.clientY);
+}
+});
+
+/* NAV SMOOTH */
 document.querySelectorAll("nav a").forEach(link=>{
-    link.addEventListener("click",e=>{
-        e.preventDefault();
-        let target=document.querySelector(link.getAttribute("href"));
-        gsap.to(window,{
-            scrollTo:target,
-            duration:1
-        });
-    });
+link.addEventListener("click",e=>{
+e.preventDefault();
+let target=document.querySelector(link.getAttribute("href"));
+window.scrollTo({
+top:target.offsetTop,
+behavior:"smooth"
+});
+});
 });
 
 </script>
