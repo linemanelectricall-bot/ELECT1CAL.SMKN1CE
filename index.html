@@ -8,7 +8,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <style>
 :root{
     --bg:#0B0E14;
@@ -199,10 +199,6 @@ section{
 
 
 
-.album-slider img:hover{
-    transform:scale(1.03);
-    box-shadow:0 0 25px rgba(0,242,255,0.7);
-}
 
 /* ===== FULLSCREEN VIEWER ===== */
 .viewer{
@@ -239,32 +235,6 @@ canvas{
     pointer-events:none;
 }
 
-/* ===== ELECTRIC CARD EFFECT ===== */
-.card{
-    position:relative;
-    overflow:hidden;
-    cursor:pointer;
-}
-
-
-/* ripple */
-.card-ripple{
-    position:absolute;
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    border:2px solid rgba(255,208,0,0.8);
-    animation:ripple 0.7s ease-out forwards;
-    pointer-events:none;
-    z-index:10;
-}
-
-@keyframes ripple{
-    0%{transform:scale(1);opacity:1;}
-    100%{transform:scale(10);opacity:0;}
-}
-
-/* ===== FINAL ELECTRIC CARD (UNIFIED SYSTEM) ===== */
 .card{
     position:relative;
     overflow:hidden;
@@ -275,23 +245,23 @@ canvas{
     transition:0.25s ease;
 }
 
-/* hover ringan saja */
+/* hover */
 .card:hover{
     transform:translateY(-3px) scale(1.02);
 }
 
-/* ACTIVE = ARUS LISTRIK HIDUP */
+/* active listrik */
 .card.active{
     transform:scale(1.05);
 }
 
-/* BORDER LISTRIK REAL */
+/* listrik border */
 .card.active::before{
     content:"";
     position:absolute;
     inset:0;
-    padding:2px;
     border-radius:12px;
+    padding:2px;
 
     background:linear-gradient(90deg,
         transparent,
@@ -311,6 +281,7 @@ canvas{
 
     pointer-events:none;
 }
+
 
 /* GERAK LISTRIK */
 @keyframes electricMove{
@@ -561,6 +532,11 @@ document.querySelectorAll(".card").forEach(card=>{
     });
 
 });
+
+scrollTrigger:{
+trigger:sec,
+start:"top 80%"
+}
 </script>
 
 </body>
