@@ -40,7 +40,7 @@ body{
 
 .intro h1{
     font-family:'Orbitron';
-    font-size:3rem;
+    font-size:2.5rem;
     color:var(--cyan);
     text-shadow:0 0 30px var(--cyan);
 }
@@ -72,32 +72,51 @@ section{
     transform:translateY(60px);
 }
 
-/* ================= HOME ================= */
-.home img{
+/* ================= HERO ================= */
+.hero{
+    position:relative;
+}
+
+.hero img{
     width:100%;
     max-height:500px;
     object-fit:cover;
-    border-radius:20px;
+    filter:brightness(0.7);
+}
+
+/* FADE */
+.hero::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:150px;
+    background:linear-gradient(to bottom,transparent,var(--bg));
+}
+
+/* OVERLAY */
+.hero-content{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:30px;
 }
 
 /* JUDUL */
 .hero-title{
-    text-align:center;
     font-family:'Orbitron';
     font-size:2.2rem;
-    margin-top:30px;
     background:linear-gradient(90deg,#00F2FF,#FFD000);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-    text-shadow:0 0 25px rgba(0,255,255,0.5);
+    text-shadow:0 0 20px rgba(0,255,255,0.4);
 }
 
 /* DESKRIPSI */
 .desc{
-    max-width:800px;
-    margin:20px auto;
-    text-align:center;
-    line-height:1.7;
+    margin-top:10px;
+    max-width:700px;
+    line-height:1.6;
 }
 
 /* ================= GRID ================= */
@@ -120,7 +139,6 @@ section{
     transition:0.3s;
 }
 
-/* FRAME */
 .card::before{
     content:'';
     position:absolute;
@@ -129,28 +147,22 @@ section{
     border:1px solid rgba(0,255,255,0.3);
 }
 
-/* IMAGE */
 .card img{
     width:100%;
     border-radius:10px;
-    display:block;
-    transition:0.3s;
 }
 
-/* HOVER */
 .card:hover{
     transform:translateY(-5px) scale(1.03);
     box-shadow:0 0 25px var(--cyan);
 }
 
-/* NAME */
 .name{
     text-align:center;
     margin-top:8px;
     font-size:0.85rem;
 }
 
-/* WALI */
 .leader{
     grid-column:1/-1;
     max-width:220px;
@@ -180,6 +192,41 @@ canvas{
     left:0;
     pointer-events:none;
 }
+
+/* ================= MOBILE FIX ================= */
+@media(max-width:768px){
+
+.intro h1{
+    font-size:1.6rem;
+}
+
+nav{
+    gap:20px;
+    font-size:0.8rem;
+}
+
+section{
+    padding:90px 10px;
+}
+
+.hero img{
+    max-height:300px;
+}
+
+/* teks lebih kecil */
+.hero-title{
+    font-size:1.3rem;
+}
+
+.desc{
+    font-size:0.85rem;
+}
+
+/* overlay lebih rapat */
+.hero-content{
+    padding:15px;
+}
+}
 </style>
 </head>
 
@@ -200,10 +247,12 @@ canvas{
 <canvas id="electric"></canvas>
 
 <!-- HOME -->
-<section id="home" class="home">
+<section id="home">
 
+<div class="hero">
 <img src="foto-kelas.jpg">
 
+<div class="hero-content">
 <h2 class="hero-title">TITL 1 • SMKN 1 CERME</h2>
 
 <div class="desc">
@@ -212,11 +261,14 @@ Kami adalah siswa Teknik Instalasi Tenaga Listrik SMKN 1 Cerme Gresik angkatan 2
 Kami belajar bukan hanya tentang listrik,
 tetapi tentang kehidupan, kerja keras, dan masa depan.
 
-Setiap percikan yang kami lihat adalah harapan,
-setiap rangkaian adalah langkah menuju impian kami.
+Setiap percikan adalah harapan,
+setiap rangkaian adalah langkah menuju impian.
 
 TITL 1 bukan sekadar kelas,
-tetapi keluarga yang akan selalu kami ingat.
+tetapi keluarga.
+</div>
+</div>
+
 </div>
 
 </section>
@@ -228,7 +280,6 @@ tetapi keluarga yang akan selalu kami ingat.
 
 <div class="grid-member">
 
-<!-- WALI -->
 <div class="card leader">
 <img src="wali.jpg">
 <div class="name">Wali Kelas</div>
@@ -246,7 +297,6 @@ document.write(`
 </script>
 
 </div>
-
 </section>
 
 <!-- ALBUM -->
@@ -267,8 +317,8 @@ document.write(`
 <script>
 
 /* INTRO */
-gsap.from("#introText",{scale:0,opacity:0,duration:1.5});
-gsap.to(".intro",{opacity:0,delay:2.5,duration:1,onComplete:()=>{
+gsap.from("#introText",{scale:0,opacity:0,duration:1.2});
+gsap.to(".intro",{opacity:0,delay:2,duration:1,onComplete:()=>{
 document.querySelector(".intro").style.display="none";
 }});
 
@@ -277,15 +327,11 @@ gsap.utils.toArray("section").forEach(sec=>{
 gsap.to(sec,{
 opacity:1,
 y:0,
-duration:1,
-scrollTrigger:{
-trigger:sec,
-start:"top 80%"
-}
+duration:1
 });
 });
 
-/* ELECTRIC SYSTEM */
+/* ELECTRIC */
 const canvas=document.getElementById("electric");
 const ctx=canvas.getContext("2d");
 
@@ -330,7 +376,7 @@ requestAnimationFrame(draw);
 }
 draw();
 
-/* HOVER SPARK */
+/* HOVER */
 document.querySelectorAll('.card').forEach(card=>{
 card.addEventListener('mouseenter',()=>{
 let r=card.getBoundingClientRect();
@@ -338,23 +384,11 @@ spark(r.left+r.width/2, r.top+r.height/2);
 });
 });
 
-/* MOUSE TRAIL */
+/* MOUSE */
 document.addEventListener("mousemove",e=>{
 if(Math.random()<0.3){
 spark(e.clientX,e.clientY);
 }
-});
-
-/* NAV SMOOTH */
-document.querySelectorAll("nav a").forEach(link=>{
-link.addEventListener("click",e=>{
-e.preventDefault();
-let target=document.querySelector(link.getAttribute("href"));
-window.scrollTo({
-top:target.offsetTop,
-behavior:"smooth"
-});
-});
 });
 
 </script>
