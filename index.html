@@ -25,7 +25,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= INTRO ================= */
+/* INTRO */
 .intro{
     position:fixed;
     width:100%;
@@ -36,105 +36,108 @@ body{
     align-items:center;
     flex-direction:column;
     z-index:999;
+    text-align:center;
+    padding:20px;
 }
 
 .intro h1{
     font-family:'Orbitron';
-    font-size:2.5rem;
+    font-size:clamp(1.5rem,6vw,3rem);
     color:var(--cyan);
-    text-shadow:0 0 30px var(--cyan);
+    text-shadow:0 0 20px var(--cyan);
 }
 
-/* ================= NAV ================= */
+.intro p{
+    font-size:0.8rem;
+    opacity:0.7;
+    margin-top:10px;
+}
+
+/* NAV */
 nav{
     position:fixed;
     width:100%;
     top:0;
     display:flex;
     justify-content:center;
-    gap:40px;
-    padding:15px;
-    background:rgba(0,0,0,0.7);
+    gap:20px;
+    padding:10px;
+    background:rgba(0,0,0,0.6);
     backdrop-filter:blur(10px);
     z-index:100;
 }
+
 nav a{
+    font-size:0.8rem;
     color:var(--cyan);
     text-decoration:none;
     font-family:'Orbitron';
 }
 
-/* ================= SECTION ================= */
+/* SECTION */
 section{
     min-height:100vh;
-    padding:120px 20px;
+    padding:90px 15px;
     opacity:0;
     transform:translateY(60px);
 }
 
-/* ================= HERO ================= */
+/* HOME */
+.home{
+    text-align:center;
+}
+
 .hero{
     position:relative;
 }
 
 .hero img{
     width:100%;
-    max-height:500px;
+    height:220px;
     object-fit:cover;
+    border-radius:0 0 25px 25px;
     filter:brightness(0.7);
 }
 
-/* FADE */
-.hero::after{
-    content:'';
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:150px;
-    background:linear-gradient(to bottom,transparent,var(--bg));
-}
-
-/* OVERLAY */
-.hero-content{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    padding:30px;
-}
-
-/* JUDUL */
 .hero-title{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
     font-family:'Orbitron';
-    font-size:2.2rem;
+    font-size:clamp(1.2rem,5vw,2.2rem);
     background:linear-gradient(90deg,#00F2FF,#FFD000);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-    text-shadow:0 0 20px rgba(0,255,255,0.4);
+    text-shadow:0 0 15px rgba(0,255,255,0.5);
 }
 
-/* DESKRIPSI */
 .desc{
-    margin-top:10px;
-    max-width:700px;
+    max-width:600px;
+    margin:20px auto 0;
+    text-align:center;
     line-height:1.6;
+    font-size:0.9rem;
+    opacity:0.85;
+    padding:0 10px;
 }
 
-/* ================= GRID ================= */
+/* GRID */
 .grid-member{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:15px;
 }
 
-/* ================= CARD ================= */
+/* CARD */
 .card{
     position:relative;
-    padding:6px;
-    border-radius:15px;
+    padding:5px;
+    border-radius:12px;
     background:linear-gradient(145deg,#1a1f2a,#0a0d12);
     box-shadow:
-    0 0 10px rgba(0,255,255,0.2),
-    inset 0 0 10px rgba(0,255,255,0.1);
+    0 0 8px rgba(0,255,255,0.2),
+    inset 0 0 8px rgba(0,255,255,0.1);
     cursor:pointer;
     transition:0.3s;
 }
@@ -143,89 +146,54 @@ section{
     content:'';
     position:absolute;
     inset:0;
-    border-radius:15px;
-    border:1px solid rgba(0,255,255,0.3);
+    border-radius:12px;
+    border:1px solid rgba(0,255,255,0.2);
 }
 
 .card img{
     width:100%;
-    border-radius:10px;
+    border-radius:8px;
 }
 
 .card:hover{
-    transform:translateY(-5px) scale(1.03);
-    box-shadow:0 0 25px var(--cyan);
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 0 15px var(--cyan);
 }
 
 .name{
     text-align:center;
-    margin-top:8px;
-    font-size:0.85rem;
+    margin-top:6px;
+    font-size:0.7rem;
 }
 
 .leader{
     grid-column:1/-1;
-    max-width:220px;
+    max-width:180px;
     margin:auto;
 }
 
-/* ================= ALBUM ================= */
+/* ALBUM */
 .album{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-.album img{
-    width:100%;
-    border-radius:15px;
-    transition:0.3s;
-}
-.album img:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px var(--cyan);
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px;
 }
 
-/* ================= CANVAS ================= */
+.album img{
+    width:100%;
+    border-radius:12px;
+}
+
+.album img:hover{
+    transform:scale(1.03);
+}
+
+/* CANVAS */
 canvas{
     position:fixed;
     top:0;
     left:0;
     pointer-events:none;
-}
-
-/* ================= MOBILE FIX ================= */
-@media(max-width:768px){
-
-.intro h1{
-    font-size:1.6rem;
-}
-
-nav{
-    gap:20px;
-    font-size:0.8rem;
-}
-
-section{
-    padding:90px 10px;
-}
-
-.hero img{
-    max-height:300px;
-}
-
-/* teks lebih kecil */
-.hero-title{
-    font-size:1.3rem;
-}
-
-.desc{
-    font-size:0.85rem;
-}
-
-/* overlay lebih rapat */
-.hero-content{
-    padding:15px;
-}
 }
 </style>
 </head>
@@ -247,13 +215,12 @@ section{
 <canvas id="electric"></canvas>
 
 <!-- HOME -->
-<section id="home">
+<section id="home" class="home">
 
 <div class="hero">
 <img src="foto-kelas.jpg">
-
-<div class="hero-content">
 <h2 class="hero-title">TITL 1 • SMKN 1 CERME</h2>
+</div>
 
 <div class="desc">
 Kami adalah siswa Teknik Instalasi Tenaga Listrik SMKN 1 Cerme Gresik angkatan 27.
@@ -261,14 +228,11 @@ Kami adalah siswa Teknik Instalasi Tenaga Listrik SMKN 1 Cerme Gresik angkatan 2
 Kami belajar bukan hanya tentang listrik,
 tetapi tentang kehidupan, kerja keras, dan masa depan.
 
-Setiap percikan adalah harapan,
-setiap rangkaian adalah langkah menuju impian.
+Setiap percikan yang kami lihat adalah harapan,
+setiap rangkaian adalah langkah menuju impian kami.
 
 TITL 1 bukan sekadar kelas,
-tetapi keluarga.
-</div>
-</div>
-
+tetapi keluarga yang akan selalu kami ingat.
 </div>
 
 </section>
@@ -297,6 +261,7 @@ document.write(`
 </script>
 
 </div>
+
 </section>
 
 <!-- ALBUM -->
@@ -318,16 +283,27 @@ document.write(`
 
 /* INTRO */
 gsap.from("#introText",{scale:0,opacity:0,duration:1.2});
-gsap.to(".intro",{opacity:0,delay:2,duration:1,onComplete:()=>{
-document.querySelector(".intro").style.display="none";
-}});
+
+if(window.innerWidth < 600){
+    gsap.to(".intro",{opacity:0,delay:1.5,duration:0.8,onComplete:()=>{
+        document.querySelector(".intro").style.display="none";
+    }});
+}else{
+    gsap.to(".intro",{opacity:0,delay:2.5,duration:1,onComplete:()=>{
+        document.querySelector(".intro").style.display="none";
+    }});
+}
 
 /* SCROLL */
 gsap.utils.toArray("section").forEach(sec=>{
 gsap.to(sec,{
 opacity:1,
 y:0,
-duration:1
+duration:1,
+scrollTrigger:{
+trigger:sec,
+start:"top 80%"
+}
 });
 });
 
@@ -341,11 +317,11 @@ canvas.height=innerHeight;
 let sparks=[];
 
 function spark(x,y){
-for(let i=0;i<15;i++){
+for(let i=0;i<12;i++){
 sparks.push({
 x,y,
-vx:(Math.random()-0.5)*8,
-vy:(Math.random()-0.5)*8,
+vx:(Math.random()-0.5)*6,
+vy:(Math.random()-0.5)*6,
 life:20
 });
 }
@@ -361,7 +337,7 @@ p.y+=p.vy;
 p.life--;
 
 ctx.strokeStyle="rgba(255,208,0,0.9)";
-ctx.shadowBlur=20;
+ctx.shadowBlur=15;
 ctx.shadowColor="#FFD000";
 
 ctx.beginPath();
@@ -377,18 +353,30 @@ requestAnimationFrame(draw);
 draw();
 
 /* HOVER */
-document.querySelectorAll('.card').forEach(card=>{
-card.addEventListener('mouseenter',()=>{
-let r=card.getBoundingClientRect();
+document.addEventListener("mouseover",e=>{
+if(e.target.closest(".card")){
+let r=e.target.closest(".card").getBoundingClientRect();
 spark(r.left+r.width/2, r.top+r.height/2);
-});
+}
 });
 
 /* MOUSE */
 document.addEventListener("mousemove",e=>{
-if(Math.random()<0.3){
+if(Math.random()<0.2){
 spark(e.clientX,e.clientY);
 }
+});
+
+/* NAV */
+document.querySelectorAll("nav a").forEach(link=>{
+link.addEventListener("click",e=>{
+e.preventDefault();
+let target=document.querySelector(link.getAttribute("href"));
+window.scrollTo({
+top:target.offsetTop,
+behavior:"smooth"
+});
+});
 });
 
 </script>
