@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,6 +9,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 
 <style>
 :root{
@@ -17,6 +20,9 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
+html, body {
+  height: 100%;
+} 
 
 body{
     background:var(--bg);
@@ -240,6 +246,8 @@ section{
     cursor:pointer;
 }
 
+
+
 /* CANVAS */
 canvas{
     position:fixed;
@@ -346,11 +354,11 @@ container.innerHTML += `
 <h2 style="text-align:center;color:var(--yellow);font-family:Orbitron;">MOMENT</h2>
 
 <div class="album-slider" id="albumSlider">
-    <img src="a1.jpg">
-    <img src="a2.jpg">
-    <img src="a3.jpg">
-    <img src="a4.jpg">
-    <img src="a5.jpg">
+   <img src="a1.jpg" onclick="openViewer(this.src)">
+<img src="a2.jpg" onclick="openViewer(this.src)"> 
+<img src="a3.jpg" onclick="openViewer(this.src)">
+<img src="a4.jpg" onclick="openViewer(this.src)">
+<img src="a5.jpg" onclick="openViewer(this.src)"> 
 </div>
 
 <!-- FULLSCREEN VIEWER -->
@@ -358,101 +366,132 @@ container.innerHTML += `
     <span onclick="closeViewer()">✕</span>
     <img id="viewerImg">
 </div>
-</section>
+
+
 <script>
+gsap.registerPlugin(ScrollTrigger);
 
 /* INTRO */
-gsap.from("#introText",{scale:0,opacity:0,duration:1.2});
+gsap.from("#introText",{
+  scale:0,
+  opacity:0,
+  duration:1.2
+});
 
 gsap.to(".intro",{
-opacity:0,
-delay: window.innerWidth < 600 ? 1.5 : 2.5,
-duration:1,
-onComplete:()=>document.querySelector(".intro").style.display="none"
+  opacity:0,
+  delay:1.8,
+  duration:1,
+  onComplete:()=>document.querySelector(".intro").remove()
 });
 
-/* SCROLL */
+/* SCROLL ANIMATION */
 gsap.utils.toArray("section").forEach(sec=>{
-gsap.to(sec,{
-opacity:1,
-y:0,
-duration:1,
-scrollTrigger:{
-trigger:sec,
-start:"top 80%"
+  gsap.to(sec,{
+    opacity:1,
+    y:0,
+    duration:1,
+    scrollTrigger:{
+      trigger:sec,
+      start:"top 80%"
+    }
+  });
+});
+
+/* ELECTRIC CANVAS */
+const canvas = document.getElementById("electric");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
 }
-});
-});
+resize();
+window.addEventListener("resize", resize);
 
-/* ELECTRIC */
-const canvas=document.getElementById("electric");
-const ctx=canvas.getContext("2d");
+const items = document.querySelectorAll(".card, .album-slider img");
+let active = null;
 
-canvas.width=innerWidth;
-canvas.height=innerHeight;
-
-let sparks=[];
-
-function spark(x,y){
-for(let i=0;i<10;i++){
-sparks.push({
-x,y,
-vx:(Math.random()-0.5)*6,
-vy:(Math.random()-0.5)*6,
-life:20
-});
-}
+function rect(el){
+  const r = el.getBoundingClientRect();
+  return {x:r.left,y:r.top,w:r.width,h:r.height};
 }
 
-function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.globalCompositeOperation="lighter";
+function arc(x1,y1,x2,y2){
+  let steps = 5;
+  let prev = {x:x1,y:y1};
 
-sparks.forEach((p,i)=>{
-p.x+=p.vx;
-p.y+=p.vy;
-p.life--;
+  for(let i=1;i<=steps;i++){
+    let t = i/steps;
 
-ctx.strokeStyle="rgba(255,208,0,0.9)";
-ctx.shadowBlur=15;
-ctx.shadowColor="#FFD000";
+    let x = x1 + (x2-x1)*t;
+    let y = y1 + (y2-y1)*t;
 
-ctx.beginPath();
-ctx.moveTo(p.x,p.y);
-ctx.lineTo(p.x+p.vx,p.y+p.vy);
-ctx.stroke();
+    x += (Math.random()-0.5)*3;
+    y += (Math.random()-0.5)*3;
 
-if(p.life<=0) sparks.splice(i,1);
-});
+    ctx.beginPath();
+    ctx.moveTo(prev.x,prev.y);
+    ctx.lineTo(x,y);
 
-requestAnimationFrame(draw);
+    ctx.strokeStyle="rgba(255,235,170,0.45)";
+    ctx.shadowBlur=8;
+    ctx.shadowColor="rgba(255,210,120,0.25)";
+    ctx.lineWidth=1.1;
+    ctx.stroke();
+
+    prev={x,y};
+  }
 }
-draw();
 
-/* INTERAKSI */
-document.addEventListener("mousemove",e=>{
-if(Math.random()<0.2){
-spark(e.clientX,e.clientY);
+function draw(el){
+  const r = rect(el);
+
+  let p = [
+    {x:r.x,y:r.y},
+    {x:r.x+r.w,y:r.y},
+    {x:r.x+r.w,y:r.y+r.h},
+    {x:r.x,y:r.y+r.h},
+    {x:r.x,y:r.y}
+  ];
+
+  for(let i=1;i<p.length;i++){
+    arc(p[i-1].x,p[i-1].y,p[i].x,p[i].y);
+  }
 }
+
+function loop(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  if(active){
+    draw(active);
+  }
+
+  requestAnimationFrame(loop);
+}
+loop();
+
+/* CLICK EFFECT */
+items.forEach(el=>{
+  el.addEventListener("click",()=>{
+    active = (active === el) ? null : el;
+  });
 });
 
+function openViewer(src){
+  const viewer = document.getElementById("viewer");
+  const img = document.getElementById("viewerImg");
 
-// ===== FULLSCREEN VIEWER =====
-const viewer = document.getElementById("viewer");
-const viewerImg = document.getElementById("viewerImg");
-
-document.querySelectorAll(".album-slider img").forEach(img=>{
-    img.addEventListener("click",()=>{
-        viewer.style.display="flex";
-        viewerImg.src = img.src;
-    });
-});
+  img.src = src;
+  viewer.style.display = "flex";
+}
 
 function closeViewer(){
-    viewer.style.display="none";
-}
-
-</script>
+  document.getElementById("viewer").style.display = "none";
+} 
+</script> 
 
 </body>
 </html>
+
+
