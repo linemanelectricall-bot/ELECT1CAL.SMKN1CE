@@ -236,51 +236,51 @@ TITL 1 bukan sekadar kelas, tetapi keluarga.
 
 <script>
 const anggota = [
-"Anang",
-"Budi",
-"Cahyo",
-"Deni",
-"Eko",
-"Fajar",
-"Gilang",
-"Hadi",
-"Iqbal",
-"Joko",
-"Krisna",
-"Lukman",
-"Made",
-"Nanda",
-"Oki",
-"Putra",
-"Qori",
-"Rizky",
-"Sandi",
-"Teguh",
-"Udin",
-"Vino",
-"Wahyu",
-"Xavier",
-"Yoga",
-"Zaki",
-"Nama 27",
-"Nama 28",
-"Nama 29",
-"Nama 30",
-"Nama 31",
-"Nama 32",
-"Nama 33"
+{nama:"Anang", foto:"1.jpg"},
+{nama:"Budi", foto:"2.jpg"},
+{nama:"Cahyo", foto:"3.jpg"},
+{nama:"Deni", foto:"4.jpg"},
+{nama:"Eko", foto:"5.jpg"},
+{nama:"Fajar", foto:"6.jpg"},
+{nama:"Gilang", foto:"7.jpg"},
+{nama:"Hadi", foto:"8.jpg"},
+{nama:"Iqbal", foto:"9.jpg"},
+{nama:"Joko", foto:"10.jpg"},
+{nama:"Krisna", foto:"11.jpg"},
+{nama:"Lukman", foto:"12.jpg"},
+{nama:"Made", foto:"13.jpg"},
+{nama:"Nanda", foto:"14.jpg"},
+{nama:"Oki", foto:"15.jpg"},
+{nama:"Putra", foto:"16.jpg"},
+{nama:"Qori", foto:"17.jpg"},
+{nama:"Rizky", foto:"18.jpg"},
+{nama:"Sandi", foto:"19.jpg"},
+{nama:"Teguh", foto:"20.jpg"},
+{nama:"Udin", foto:"21.jpg"},
+{nama:"Vino", foto:"22.jpg"},
+{nama:"Wahyu", foto:"23.jpg"},
+{nama:"Xavier", foto:"24.jpg"},
+{nama:"Yoga", foto:"25.jpg"},
+{nama:"Zaki", foto:"27.jpg"},
+{nama:"Zaki", foto:"28.jpg"},
+{nama:"Zaki", foto:"29.jpg"},
+{nama:"Zaki", foto:"30.jpg"},
+{nama:"Zaki", foto:"31.jpg"},
+{nama:"Zaki", foto:"32.jpg"},
+{nama:"Zaki", foto:"33.jpg"}
 ];
 
 const container = document.querySelector(".grid-member");
 
-anggota.forEach((nama, i)=>{
+anggota.forEach(item=>{
 container.innerHTML += `
 <div class="card">
-<img src="${i+1}.jpg">
-<div class="name">${nama}</div>
+<img src="img/anggota/${item.foto}">
+<div class="name">${item.nama}</div>
 </div>
 `;
 });
+</script>
 </script>
 </script>
 </div>
