@@ -235,14 +235,53 @@ TITL 1 bukan sekadar kelas, tetapi keluarga.
 </div>
 
 <script>
-for(let i=1;i<=33;i++){
-document.write(`
+const anggota = [
+"Anang",
+"Budi",
+"Cahyo",
+"Deni",
+"Eko",
+"Fajar",
+"Gilang",
+"Hadi",
+"Iqbal",
+"Joko",
+"Krisna",
+"Lukman",
+"Made",
+"Nanda",
+"Oki",
+"Putra",
+"Qori",
+"Rizky",
+"Sandi",
+"Teguh",
+"Udin",
+"Vino",
+"Wahyu",
+"Xavier",
+"Yoga",
+"Zaki",
+"Nama 27",
+"Nama 28",
+"Nama 29",
+"Nama 30",
+"Nama 31",
+"Nama 32",
+"Nama 33"
+];
+
+const container = document.querySelector(".grid-member");
+
+anggota.forEach((nama, i)=>{
+container.innerHTML += `
 <div class="card">
-<img src="${i}.jpg">
-<div class="name">${nama[i]}</div>
+<img src="${i+1}.jpg">
+<div class="name">${nama}</div>
 </div>
-`);
-}
+`;
+});
+</script>
 </script>
 </div>
 </section>
