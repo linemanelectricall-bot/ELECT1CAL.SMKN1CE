@@ -124,11 +124,12 @@ section{
 .desc{
     max-width:550px;
     margin:25px auto 0;
-    text-align:center;
+    text-align:justify;
     line-height:1.7;
     font-size:0.9rem;
     opacity:0.85;
     letter-spacing:0.3px;
+    text-justify:inter-word;
 }
 
 .grid-member{
@@ -180,7 +181,26 @@ section{
 
 .album img{
     width:100%;
-    border-radius:12px;
+    border-radius:14px;
+    padding:6px;
+
+    background: linear-gradient(145deg, rgba(0,242,255,0.15), rgba(255,208,0,0.1));
+
+    border:1px solid rgba(0,242,255,0.4);
+
+    box-shadow:
+        0 0 10px rgba(0,242,255,0.25),
+        inset 0 0 8px rgba(255,208,0,0.1);
+
+    transition:0.3s ease;
+    filter: brightness(1.05);
+}
+    .album img:hover{
+    transform:scale(1.05);
+    box-shadow:
+        0 0 18px rgba(0,242,255,0.6),
+        0 0 25px rgba(255,208,0,0.3);
+    filter: brightness(1.2);
 }
 
 /* CANVAS */
@@ -201,6 +221,7 @@ canvas{
 </div>
 
 <nav>
+<a href="#home">TITL1 SMKN1CE</a>
 <a href="#home">HOME</a>
 <a href="#anggota">ANGGOTA</a>
 <a href="#album">ALBUM</a>
@@ -215,16 +236,12 @@ canvas{
 </div>
 
 <div class="desc">
-Selamat datang di website resmi kelas TITL 1 – Angkatan 27 ⚡
+Selamat datang di website resmi kelas TITL 1 – Angkatan 27 ⚡<br>
 Kami adalah bagian dari SMKN 1 Cerme, Gresik, jurusan Teknik Instalasi Tenaga Listrik yang siap mencetak generasi profesional di bidang kelistrikan industri modern.<br><br>
 Di kelas ini, kami belajar bukan hanya tentang arus listrik, panel kontrol, instalasi, dan sistem tenaga, tetapi juga tentang ketelitian, disiplin, tanggung jawab, dan kerja sama tim yang menjadi pondasi utama seorang teknisi sejati.<br><br>
 Setiap percikan adalah harapan, setiap rangkaian adalah langkah menuju impian.<br><br>
 Kami percaya bahwa masa depan tidak datang dengan sendirinya —
-tetapi dibangun dari usaha, latihan, dan keberanian untuk terus mencoba tanpa takut gagal.<br>
-
-⚡ Setiap rangkaian yang kami pasang adalah langkah menuju masa depan<br>
-⚡ Setiap kesalahan adalah pelajaran untuk menjadi lebih kuat<br>
-⚡ Setiap proses adalah bagian dari perjalanan menuju profesional sejati
+tetapi dibangun dari usaha, latihan, dan keberanian untuk terus mencoba tanpa takut gagal.
 </div>
 </section>
 
