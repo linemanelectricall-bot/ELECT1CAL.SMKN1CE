@@ -137,15 +137,6 @@ section{
     grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
 }
 
-/* CARD */
-
-
-.card img{
-    width:100%;
-    border-radius:8px;
-}
-
-
 
 .name{
     text-align:center;
@@ -523,10 +514,22 @@ function closeViewer(){
 
 
 /* CARD EFFECT */
-document.querySelectorAll(".card").forEach(card=>{
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card=>{
     card.addEventListener("click",(e)=>{
+
+        // reset semua dulu (biar hanya 1 aktif)
+        cards.forEach(c=>{
+            if(c !== card){
+                c.classList.remove("active");
+            }
+        });
+
+        // toggle aktif
         card.classList.toggle("active");
 
+        // ripple effect
         const ripple = document.createElement("span");
         ripple.className = "card-ripple";
 
