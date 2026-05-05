@@ -239,7 +239,47 @@ for(let i=1;i<=33;i++){
 document.write(`
 <div class="card">
 <img src="${i}.jpg">
-<div class="name">Nama ${i}</div>
+const nama = [
+"Anang",
+"Budi",
+"Cahyo",
+"Dedi",
+"Eko",
+"Fajar",
+"Gilang",
+"Hadi",
+"Irfan",
+"Joko",
+"Kevin",
+"Lukman",
+"Miko",
+"Nanda",
+"Oki",
+"Putra",
+"Qori",
+"Rizky",
+"Sandi",
+"Teguh",
+"Udin",
+"Vino",
+"Wahyu",
+"Xavier",
+"Yusuf",
+"Zaki",
+"Andre",
+"Bagas",
+"Candra",
+"Dimas",
+"Ega",
+"Fikri",
+"Guntur"
+];
+
+for(let i=0;i<33;i++){
+document.write(`
+<div class="card">
+<img src="${i+1}.jpg">
+<div class="name">${nama[i]}</div>
 </div>
 `);
 }
