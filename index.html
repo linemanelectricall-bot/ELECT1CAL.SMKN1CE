@@ -475,8 +475,8 @@ function arc(x1,y1,x2,y2){
     let x = x1 + (x2-x1)*t;
     let y = y1 + (y2-y1)*t;
 
-    x += (Math.random()-0.8)*15;
-    y += (Math.random()-0.8)*15;
+    x += (Math.random()-0.5)*12;
+    y += (Math.random()-0.5)*12;
 
     ctx.beginPath();
     ctx.moveTo(prev.x,prev.y);
@@ -496,6 +496,11 @@ function draw(el){
   const r = rect(el);
 
   let p = [
+    {x:r.x,y:r.y},
+    {x:r.x+r.w,y:r.y},
+    {x:r.x+r.w,y:r.y+r.h},
+    {x:r.x,y:r.y+r.h},
+    {x:r.x,y:r.y},
     {x:r.x,y:r.y},
     {x:r.x+r.w,y:r.y},
     {x:r.x+r.w,y:r.y+r.h},
