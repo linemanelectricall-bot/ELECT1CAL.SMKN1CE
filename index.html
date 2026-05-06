@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -398,7 +397,6 @@ container.innerHTML += `
    <img src="a17.jpg" onclick="openViewer(this.src)">
    <img src="a18.jpg" onclick="openViewer(this.src)">
    <img src="a19.jpg" onclick="openViewer(this.src)"> 
-  
 </div>
 
 <!-- FULLSCREEN VIEWER -->
@@ -448,7 +446,7 @@ function resize(){
 }
 resize();
 window.addEventListener("resize", resize);
-    
+
 const items = document.querySelectorAll(".card, .album-slider img");
 let active = null;
 
@@ -467,8 +465,8 @@ function arc(x1,y1,x2,y2){
     let x = x1 + (x2-x1)*t;
     let y = y1 + (y2-y1)*t;
 
-    x += (Math.random()-0.5)*12;
-    y += (Math.random()-0.5)*12;
+    x += (Math.random()-0.5)*3;
+    y += (Math.random()-0.5)*3;
 
     ctx.beginPath();
     ctx.moveTo(prev.x,prev.y);
@@ -509,7 +507,8 @@ function loop(){
 
   requestAnimationFrame(loop);
 }
-    
+loop();
+
 /* CLICK EFFECT */
 items.forEach(el=>{
   el.addEventListener("click",()=>{
@@ -532,5 +531,3 @@ function closeViewer(){
 
 </body>
 </html>
-
-
