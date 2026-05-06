@@ -273,13 +273,18 @@ section{
 }
 
 
-
 /* CANVAS */
 canvas{
     position:fixed;
-    top:0;
-    left:0;
+    inset:0;
     pointer-events:none;
+    z-index:0;
+}
+
+/* Biar konten di atas canvas */
+section, nav, .intro{
+    position:relative;
+    z-index:1;
 }
 </style>
 </head>
@@ -450,6 +455,40 @@ function resize(){
 resize();
 window.addEventListener("resize", resize);
 
+function lightning(x, y, length, angle, depth){
+  if(depth > 4) return;
+
+  let xEnd = x + Math.cos(angle) * length;
+  let yEnd = y + Math.sin(angle) * length;
+
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(xEnd, yEnd);
+
+  ctx.strokeStyle = "rgba(0, 242, 255, 0.9)";
+  ctx.lineWidth = 2;
+  ctx.shadowBlur = 15;
+  ctx.shadowColor = "#00F2FF";
+  ctx.stroke();
+
+  // cabang
+  if(Math.random() > 0.7){
+    lightning(xEnd, yEnd, length * 0.7, angle - 0.5, depth + 1);
+  }
+  if(Math.random() > 0.7){
+    lightning(xEnd, yEnd, length * 0.7, angle + 0.5, depth + 1);
+  }
+
+  // lanjut utama
+  lightning(
+    xEnd,
+    yEnd,
+    length * 0.9,
+    angle + (Math.random()-0.5)*0.6,
+    depth + 1
+  );
+}
+    
 const items = document.querySelectorAll(".card, .album-slider img");
 let active = null;
 
@@ -504,13 +543,19 @@ function draw(el){
 function loop(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
+  // ⚡ petir random
+  if(Math.random() > 0.97){
+    let x = Math.random() * canvas.width;
+    lightning(x, 0, 80, Math.PI/2, 0);
+  }
+
+  // efek klik kamu
   if(active){
     draw(active);
   }
 
   requestAnimationFrame(loop);
 }
-loop();
 
 /* CLICK EFFECT */
 items.forEach(el=>{
