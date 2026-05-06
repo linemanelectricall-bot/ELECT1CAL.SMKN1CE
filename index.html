@@ -543,20 +543,13 @@ function draw(el){
 function loop(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  // ⚡ petir random
-  if(Math.random() > 0.97){
-    let x = Math.random() * canvas.width;
-    lightning(x, 0, 80, Math.PI/2, 0);
-  }
-
-  // efek klik kamu
   if(active){
     draw(active);
   }
 
   requestAnimationFrame(loop);
 }
-
+    
 /* CLICK EFFECT */
 items.forEach(el=>{
   el.addEventListener("click",()=>{
