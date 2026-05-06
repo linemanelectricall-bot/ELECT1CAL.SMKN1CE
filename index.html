@@ -239,8 +239,8 @@ section{
 
 .viewer span{
     position:fixed;
-    top:15px;
-    right:15px;
+    top:10px;
+    right:10px;
     font-size:2.2rem;
     color:white;
     cursor:pointer;
@@ -459,8 +459,8 @@ function arc(x1,y1,x2,y2){
     let x = x1 + (x2-x1)*t;
     let y = y1 + (y2-y1)*t;
 
-    x += (Math.random()-0.5)*7;
-    y += (Math.random()-0.5)*7;
+    x += (Math.random()-0.5)*12;
+    y += (Math.random()-0.5)*12;
 
     ctx.beginPath();
     ctx.moveTo(prev.x,prev.y);
