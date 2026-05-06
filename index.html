@@ -289,17 +289,6 @@ canvas{
     left:0;
     pointer-events:none;
 }
-
-/* BACKGROUND ELECTRIC EFFECT */
-#bg-electric{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:0;
-    pointer-events:none;
-}
 </style>
 </head>
 
@@ -317,7 +306,6 @@ canvas{
 <a href="#album">ALBUM</a>
 </nav>
 
-<canvas id="bg-electric"></canvas>
 <canvas id="electric"></canvas>
 
 <section id="home">
@@ -554,84 +542,7 @@ function openViewer(src){
 function closeViewer(){
   document.getElementById("viewer").style.display = "none";
 } 
-
-<script>
-/* =========================
-   BACKGROUND LIGHTNING FX
-   ========================= */
-
-const bgCanvas = document.getElementById("bg-electric");
-const bgCtx = bgCanvas.getContext("2d");
-
-function resizeBG(){
-    bgCanvas.width = window.innerWidth;
-    bgCanvas.height = window.innerHeight;
-}
-resizeBG();
-window.addEventListener("resize", resizeBG);
-
-function lightning(x1,y1,x2,y2,opacity=1){
-    let seg = 10;
-    let prev = {x:x1,y:y1};
-
-    for(let i=1;i<=seg;i++){
-        let t = i/seg;
-
-        let x = x1 + (x2-x1)*t;
-        let y = y1 + (y2-y1)*t;
-
-        x += (Math.random()-0.5)*40;
-        y += (Math.random()-0.5)*40;
-
-        bgCtx.beginPath();
-        bgCtx.moveTo(prev.x,prev.y);
-        bgCtx.lineTo(x,y);
-
-        bgCtx.strokeStyle = `rgba(255, 215, 0, ${opacity})`;
-        bgCtx.lineWidth = 1.5;
-        bgCtx.shadowBlur = 15;
-        bgCtx.shadowColor = "rgba(255,200,0,0.8)";
-        bgCtx.stroke();
-
-        prev = {x,y};
-    }
-}
-
-let bolts = [];
-
-function spawnLightning(){
-    let x = Math.random() * bgCanvas.width;
-    let y = 0;
-    let x2 = x + (Math.random()-0.5)*200;
-    let y2 = bgCanvas.height;
-
-    bolts.push({
-        x,y,x2,y2,
-        life: Math.random()*20 + 10
-    });
-}
-
-function animateBG(){
-    bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
-
-    if(Math.random() < 0.05){
-        spawnLightning();
-    }
-
-    bolts.forEach((b,i)=>{
-        lightning(b.x,b.y,b.x2,b.y2,b.life/30);
-        b.life--;
-
-        if(b.life <= 0){
-            bolts.splice(i,1);
-        }
-    });
-
-    requestAnimationFrame(animateBG);
-}
-
-animateBG();
-
 </script> 
+
 </body>
 </html>
