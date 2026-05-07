@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TITL 1 SMKN 1 CERME</title>
+<title>TITL 1 SMKN 1 CERME XXVII</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -253,13 +253,13 @@ section{
 
 .viewer span{
     position:fixed;
-    top:calc(10px + env(safe-area-inset-top));
-    right:10px;
+    top:calc(5px + env(safe-area-inset-top));
+    right:5px;
     font-size:2.2rem;
     color:white;
     cursor:pointer;
     z-index:10000;
-    padding:8px;
+    padding:6px;
 }
 
 .viewer{
@@ -300,7 +300,7 @@ canvas{
 </div>
 
 <nav>
-<a href="#home">TITL1 SMKN1CE</a>
+<a href="">TITL1 SMKN1CE</a>
 <a href="#home">HOME</a>
 <a href="#anggota">ANGGOTA</a>
 <a href="#album">ALBUM</a>
@@ -311,7 +311,7 @@ canvas{
 <section id="home">
 <div class="hero">
 <img src="foto-kelas.jpg">
-<h2 class="hero-title">TITL 1 • SMKN 1 CERME</h2>
+<h2 class="hero-title">TITL 1 • SMKN 1 CERME  XXVII</h2>
 </div>
 
 <div class="desc">
@@ -330,7 +330,7 @@ tetapi dibangun dari usaha, latihan, dan keberanian untuk terus mencoba tanpa ta
 <div class="grid-member">
 <div class="card leader">
 <img src="wali.jpg">
-<div class="name">Wali Kelas</div>
+<div class="name">Nurachmad, S.Pd.</div>
 </div>
 
 <script>
@@ -352,7 +352,7 @@ const anggota = [
 {nama:"15. Anang Ma'rup", foto:"152.jpg"},
 {nama:"16. Andika Agustian N", foto:"16.jpg"},
 {nama:"17. Andrian Mafakhir", foto:"17.jpg"},
-{nama:"18. Arfin Bintang I", foto:"18.jpg"},
+{nama:"18. Arfin Bintang I", foto:"18pp.jpg"},
 {nama:"19. Arshel Prandika", foto:"192.jpg"},
 {nama:"20. Avin Dwi C", foto:"20.jpg"},
 {nama:"21. Axel Muhamad K.A", foto:"212.jpg"},
@@ -388,6 +388,8 @@ container.innerHTML += `
 <h2 style="text-align:center;color:var(--yellow);font-family:Orbitron;">MOMENT</h2>
 
 <div class="album-slider" id="albumSlider">
+   <img src="pelepasan.jpg" onclick="openViewer(this.src)">
+   <img src="pelepasan2.jpg" onclick="openViewer(this.src)">
    <img src="a1.jpg" onclick="openViewer(this.src)">
    <img src="a2.jpg" onclick="openViewer(this.src)"> 
    <img src="a3.jpg" onclick="openViewer(this.src)">
